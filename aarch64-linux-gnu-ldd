@@ -28,18 +28,19 @@
 export LC_ALL=C
 version="forked from crosstool-ng 1.22.0"
 # Change it to 64 if necessary
-bits="32"
+bits="64"
 sed="${SED:-sed}"
 grep="${GREP:-grep}"
 
 my_name="$( basename "${0}" )"
-prefix="${0%-ldd}"
+#prefix="${0%-ldd}"
+prefix="aarch64-linux-gnu"
 gcc="${prefix}-gcc"
 readelf="${prefix}-readelf"
 fake_load_addr_root="$((0xdeadbeef))"
 fake_load_addr_rpath="$((0xdeadc0de))"
 fake_load_addr_sysroot="$((0x8badf00d))"
-ld_library_path="/lib:/usr/lib"
+ld_library_path="/usr/aarch64-linux-gnu/lib:/usr/lib/aarch64-linux-gnu"
 
 do_error() {
     printf "%s: %s\n" "${my_name}" "$*" >&2
